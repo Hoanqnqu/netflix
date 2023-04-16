@@ -6,6 +6,7 @@ import Banner from '@/components/Banner';
 import requests from '@/utils/requests';
 import { Movie } from '@/typings';
 import Row from '@/components/Row';
+import useAuth from '@/hooks/useAuth';
 
 interface Props {
     netflixOriginals: Movie[];
@@ -28,6 +29,8 @@ const Home = ({
     romanceMovies,
     documentaries,
 }: Props) => {
+    const { loading } = useAuth();
+    if (loading) return 'Loading...';
     console.log(netflixOriginals);
     return (
         <div className="min-h-screen relative bg-gradient-to-b lg:h-[140vh]">
